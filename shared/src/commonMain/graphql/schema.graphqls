@@ -1,0 +1,78 @@
+type Query {
+  tempQuery: String!
+}
+
+type Mutation {
+  login(username: String!, password: String!): LoginOutput!
+
+  refreshToken(refreshToken: String!): RefreshTokenOutput!
+
+  getCurrentUser: UserOutput!
+
+  postTimesheet: PostTimesheetOutput!
+
+  getAllEmployees: GetAllEmployeesOutput!
+}
+
+type LoginOutput {
+  status: Int
+
+  error: AuthenticationError
+
+  token: String
+
+  refreshToken: String
+}
+
+type AuthenticationError {
+  message: String!
+}
+
+type RefreshTokenOutput {
+  status: Int
+
+  error: AuthenticationError
+
+  token: String
+
+  refreshToken: String
+}
+
+type UserOutput {
+  status: Int
+
+  error: UserError
+
+  user: User
+}
+
+type UserError {
+  message: String!
+}
+
+type User {
+  placeholder: String
+}
+
+type PostTimesheetOutput {
+  status: Int
+
+  error: String
+}
+
+type GetAllEmployeesOutput {
+  status: Int
+
+  error: String
+
+  users: [PartialUser!]!
+}
+
+type PartialUser {
+  placeholder: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
